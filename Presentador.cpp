@@ -18,18 +18,6 @@ Presentador::Presentador()
 	currentMenu = "MenuPrincipal";
 }
 
-Presentador::~Presentador()
-{
-	/*delete vista;
-	vista = NULL;
-	delete cotizador;
-	cotizador = NULL;
-	delete tienda;
-	tienda = NULL;
-	delete vendedor;
-	vendedor = NULL;*/
-}
-
 bool Presentador::InicializarTienda(std::string nombre, std::string direccion)
 {
 	if(tienda){

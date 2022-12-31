@@ -8,7 +8,6 @@ class Presentador
 {
 public:
 	Presentador();
-	~Presentador();
 	/* Inicializadores */
 	bool InicializarTienda(std::string nombre, std::string direccion);
 	void InicializarVendedor(int codigo, std::string nombre, std::string apellido);
