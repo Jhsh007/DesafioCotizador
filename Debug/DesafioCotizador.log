@@ -1,5 +1,6 @@
-﻿  Cotizacion.cpp
-  DesafioCotizador.cpp
-  Vendedor.cpp
+﻿  DesafioCotizador.cpp
+  Presentador.cpp
+  Tienda.cpp
+  Vistas.cpp
   Generando código...
   DesafioCotizador.vcxproj -> F:\DesafioC\DesafioCotizador\Debug\DesafioCotizador.exe

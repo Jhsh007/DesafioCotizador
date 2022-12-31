@@ -33,6 +33,12 @@
     <ClCompile Include="Pantalon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Vistas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Presentador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendedor.h">
@@ -51,6 +57,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pantalon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Presentador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cotizador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vistas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

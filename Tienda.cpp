@@ -1,4 +1,5 @@
 #include "Tienda.h"
+#include <iostream>
 
 Tienda::Tienda()
 {
