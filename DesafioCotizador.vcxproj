@@ -100,10 +100,13 @@
   <ItemGroup>
     <ClCompile Include="Cotizacion.cpp" />
     <ClCompile Include="DesafioCotizador.cpp" />
+    <ClCompile Include="Tienda.cpp" />
     <ClCompile Include="Vendedor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cotizacion.h" />
+    <ClInclude Include="Prenda.h" />
+    <ClInclude Include="Tienda.h" />
     <ClInclude Include="Vendedor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
