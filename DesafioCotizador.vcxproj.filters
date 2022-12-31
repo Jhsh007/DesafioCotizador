@@ -39,6 +39,9 @@
     <ClCompile Include="Presentador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cotizador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendedor.h">

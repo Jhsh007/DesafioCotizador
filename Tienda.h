@@ -9,10 +9,13 @@ public:
 	Tienda();
 	~Tienda();
 	void Inicializar(std::string nombre, std::string direccion);
+	//Añade un tipo de prenda al vector tiposPrendas
+	void AñadirPrenda(Prenda* prenda);
 
 	/* Getters */
 	inline std::string GetNombre() { return nombre_tienda; }
 	inline std::string GetDireccion() { return direccion_tienda; }
+	inline std::vector<Prenda*> GetTiposPrendas() { return tiposPrendas; }
 
 private:
 	/* Variables */

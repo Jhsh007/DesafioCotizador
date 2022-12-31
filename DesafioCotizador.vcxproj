@@ -100,6 +100,7 @@
   <ItemGroup>
     <ClCompile Include="Camisa.cpp" />
     <ClCompile Include="Cotizacion.cpp" />
+    <ClCompile Include="Cotizador.cpp" />
     <ClCompile Include="DesafioCotizador.cpp" />
     <ClCompile Include="Pantalon.cpp" />
     <ClCompile Include="Presentador.cpp" />

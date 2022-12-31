@@ -23,7 +23,7 @@ private:
 	//Maneja las funciones para mostrar datos en consola
 	Vistas* vista;
 	//Maneja las funciones para procesar los datos del programa
-	//Cotizador cotizador;
+	Cotizador* cotizador;
 
 	/* Tienda y Vendedor */
 	Tienda* tienda;
