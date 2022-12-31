@@ -98,13 +98,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camisa.cpp" />
     <ClCompile Include="Cotizacion.cpp" />
     <ClCompile Include="DesafioCotizador.cpp" />
+    <ClCompile Include="Pantalon.cpp" />
     <ClCompile Include="Tienda.cpp" />
     <ClCompile Include="Vendedor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cotizacion.h" />
+    <ClInclude Include="Camisa.h" />
+    <ClInclude Include="Pantalon.h" />
     <ClInclude Include="Prenda.h" />
     <ClInclude Include="Tienda.h" />
     <ClInclude Include="Vendedor.h" />
