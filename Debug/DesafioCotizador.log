@@ -1,2 +1,5 @@
 ﻿  Presentador.cpp
+  Vistas.cpp
+F:\DesafioC\DesafioCotizador\Vistas.cpp(25,27): warning C4018: '<': no coinciden signed/unsigned
+  Generando código...
   DesafioCotizador.vcxproj -> F:\DesafioC\DesafioCotizador\Debug\DesafioCotizador.exe

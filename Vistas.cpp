@@ -128,11 +128,6 @@ void Vistas::CrearMenuValorCotizado(std::string codigoCotizacion, std::string fe
     std::cout << "---------------------------------------------\n";
 }
 
-void Vistas::Salir()
-{
-    exit(0);
-}
-
 void Vistas::CrearBanner(std::string menu)
 {
     system("cls");
@@ -140,9 +135,7 @@ void Vistas::CrearBanner(std::string menu)
     std::cout << "---------------------------------------------\n";
 }
 
-void Vistas::MostrarError(std::string error, std::string tipo)
+void Vistas::MostrarError(std::string error)
 {
     std::cout << error;
-    if(tipo == "Cerrar")
-        Salir();
 }

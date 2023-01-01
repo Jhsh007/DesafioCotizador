@@ -18,6 +18,9 @@ public:
 	/* Maneja el error cuando el usuario ingresa una opción erronea */
 	void MostrarError(std::string opcionElegida, std::string error);
 
+	/* Se encarga de manejar el fin de la ejecución del programa */
+	void Salir();
+
 private:
 	//Maneja las funciones para mostrar datos en consola
 	Vistas* vista;

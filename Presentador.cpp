@@ -29,8 +29,10 @@ bool Presentador::InicializarTienda(std::string nombre, std::string direccion)
 		if(cotizador && cotizador->InicializarStock(tienda)){
 			return true;
 		}else{
-			if(vista)
-				vista->MostrarError("No se pudo leer el stock, contacte al administrador.", "Cerrar");
+			if(vista){
+				vista->MostrarError("No se pudo leer el stock, contacte al administrador.");
+				Salir();
+			}
 			return false;
 		}
 	}else{
@@ -80,7 +82,7 @@ void Presentador::HandleMenus(std::string opcionElegida)
 				currentMenu = "MenuCotizacion";
 				break;
 			case 3:
-				vista->Salir();
+				Salir();
 				break;
 			}
 		}
@@ -346,4 +348,17 @@ void Presentador::MostrarError(std::string opcionElegida, std::string error)
 	std::cout << error;
 	std::cin >> opcionElegida;
 	HandleMenus(opcionElegida);
+}
+
+void Presentador::Salir()
+{
+	delete cotizador;
+	cotizador = NULL;
+	delete vista;
+	vista = NULL;
+	delete tienda;
+	tienda = NULL;
+	delete vendedor;
+	vendedor = NULL;
+	exit(0);
 }

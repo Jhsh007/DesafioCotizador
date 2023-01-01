@@ -9,10 +9,9 @@ int main()
     setlocale(LC_CTYPE, "spanish");
 
     //Objeto presentador el cual maneja todo el sistema
-    Presentador p;
-
+    Presentador* p = new Presentador();
     //Inicializar datos base y comenzar el programa
-    p.InicializarTienda("Tienda1", "Kr 9 #55-10");
-    p.InicializarVendedor(1516, "Juan", "Mart\u00EDnez");
-    p.IniciarMenus();
+    p->InicializarTienda("Tienda1", "Kr 9 #55-10");
+    p->InicializarVendedor(1516, "Juan", "Mart\u00EDnez");
+    p->IniciarMenus();
 }

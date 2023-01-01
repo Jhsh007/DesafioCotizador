@@ -13,7 +13,6 @@ Cotizador::Cotizador()
 
 Cotizador::~Cotizador()
 {
-	std::cout << "Cotizado";
 	/* Limpiar y borrar los punteros en el vector cotizaciones */
 	for(Cotizacion* cot : cotizaciones){
 		delete cot;
