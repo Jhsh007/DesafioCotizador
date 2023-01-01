@@ -243,13 +243,15 @@ double Cotizador::ValidarDouble(std::string dato)
 {
 	try{
 		double valorValidado;
-		valorValidado = std::stod(dato);
+		//valorValidado = std::stod(dato);
+		valorValidado = atof(dato.c_str());
 		return valorValidado;
 	}catch(...){
 		return -1;
 	}
 }
 
+/* Construye un vector separando un string en vace a un delimitador */
 std::vector<std::string> Cotizador::SplitStr(std::string str, std::string deli){
 	std::vector<std::string> vectorString;
 	int start = 0;

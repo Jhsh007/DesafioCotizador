@@ -326,6 +326,16 @@ void Presentador::HandleMenus(std::string opcionElegida)
 				}
 			}
 		}
+	}else if(currentMenu == "MenuCotizado"){
+		if(opcionElegida == "h"){// Si la opción es h, ir al menú de historial
+			isValid = true;
+			vista->CrearMenuHistorial(cotizador->GetCotizaciones());
+			currentMenu = "MenuHistorial";
+		}else{
+			isValid = true;
+			vista->CrearMenuPrincipal(tienda, vendedor);
+			currentMenu = "MenuPrincipal";
+		}
 	}
 
 	/* Si la opción es valida, esperar por la siguiente opción del usuario */
