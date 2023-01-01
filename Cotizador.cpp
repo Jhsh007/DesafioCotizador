@@ -39,7 +39,7 @@ bool Cotizador::InicializarStock(Tienda* t)
 			std::vector<std::string> datosPrenda = SplitStr(line, "-");
 			prendaActual = datosPrenda[0];
 			tipo1Actual = datosPrenda[1];
-			if(prendaActual == "Camisas"){
+			if(prendaActual == "Camisa"){
 				tipo2Actual = datosPrenda[2];
 				calidad = datosPrenda[3];
 				cantidad = ValidarEntero(datosPrenda[4]);

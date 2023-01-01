@@ -12,10 +12,14 @@ public:
 	//Añade un tipo de prenda al vector tiposPrendas
 	void AñadirPrenda(Prenda* prenda);
 
+	Prenda* GetTipoPrenda(std::string tipo1, std::string tipo2, std::string calidad);
+	Prenda* GetTipoPrenda(std::string tipo, std::string calidad);
+
 	/* Getters */
 	inline std::string GetNombre() { return nombre_tienda; }
 	inline std::string GetDireccion() { return direccion_tienda; }
 	inline std::vector<Prenda*> GetTiposPrendas() { return tiposPrendas; }
+	
 
 private:
 	/* Variables */

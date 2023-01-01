@@ -1,5 +1,7 @@
 #include "Presentador.h"
 #include <iostream>
+#include "Camisa.h"
+#include "Pantalon.h"
 
 Presentador::Presentador()
 {
@@ -91,6 +93,192 @@ void Presentador::HandleMenus(std::string opcionElegida)
 			currentMenu = "MenuPrincipal";
 		}else{
 			MostrarError(opcionElegida, "Opción invalida, seleccione 3 para volver al menú\n");
+		}
+	}else if (currentMenu == "MenuCotizacion"){
+		if(opcionElegida == "h"){// Si la opción es h, ir al menú de historial
+			isValid = true;
+			vista->CrearMenuHistorial(cotizador->GetCotizaciones());
+			currentMenu = "MenuHistorial";
+		}else{
+			//Validar la opción elegida por el usuario
+			opcion = cotizador->ValidarEntero(opcionElegida);
+			if(opcion > 0 && opcion < 4){
+				isValid = true;
+			}else{
+				MostrarError(opcionElegida, "Opción invalida, seleccione 1, 2 o 3\n");
+			}
+			if(isValid){// Si la opción es valida pasar a la pantalla indicada
+				switch (opcion){
+				case 1:
+					vista->CrearMenuSeleccion(opcion);
+					currentMenu = "MenuSeleccion";
+					prenda = "Camisa";
+					break;
+				case 2:
+					vista->CrearMenuSeleccion(opcion);
+					currentMenu = "MenuSeleccion";
+					prenda = "Pantalon";
+					break;
+				case 3:
+					vista->CrearMenuPrincipal(tienda, vendedor);
+					currentMenu = "MenuPrincipal";
+					break;
+				}
+			}
+		}
+	}else if(currentMenu == "MenuSeleccion"){
+		if(opcionElegida == "h"){// Si la opción es h, ir al menú de historial
+			isValid = true;
+			vista->CrearMenuHistorial(cotizador->GetCotizaciones());
+			currentMenu = "MenuHistorial";
+		}else{
+			//Validar la opción elegida por el usuario
+			opcion = cotizador->ValidarEntero(opcionElegida);
+			if(opcion > 0 && opcion < 4){
+				isValid = true;
+			}else{
+				MostrarError(opcionElegida, "Opción invalida, seleccione 1, 2 o 3\n");
+			}
+			if(isValid){// Si la opción es valida pasar a la pantalla indicada
+				switch (opcion) {
+				case 1:
+					if(prenda == "Camisa"){
+						vista->CrearMenuSeleccion(3);
+						currentMenu = "MenuSeleccionCamisa";
+						tipo_manga = "Corta";
+					}else{
+						vista->CrearMenuCalidad();
+						currentMenu = "MenuCalidad";
+						tipo_pantalon = "Chupín";
+					}
+					break;
+				case 2:
+					if(prenda == "Camisa"){
+						vista->CrearMenuSeleccion(3);
+						currentMenu = "MenuSeleccionCamisa";
+						tipo_manga = "Larga";
+					}else{
+						vista->CrearMenuCalidad();
+						currentMenu = "MenuCalidad";
+						tipo_pantalon = "Común";
+					}
+					break;
+				case 3:
+					vista->CrearMenuPrincipal(tienda, vendedor);
+					currentMenu = "MenuPrincipal";
+					break;
+				}
+			}
+		}
+	}else if(currentMenu == "MenuSeleccionCamisa"){
+		if(opcionElegida == "h"){// Si la opción es h, ir al menú de historial
+			isValid = true;
+			vista->CrearMenuHistorial(cotizador->GetCotizaciones());
+			currentMenu = "MenuHistorial";
+		}else{
+			//Validar la opción elegida por el usuario
+			opcion = cotizador->ValidarEntero(opcionElegida);
+			if(opcion > 0 && opcion < 4){
+				isValid = true;
+			}else{
+				MostrarError(opcionElegida, "Opción invalida, seleccione 1, 2 o 3\n");
+			}
+			if(isValid){// Si la opción es valida pasar a la pantalla indicada
+				switch(opcion){
+				case 1:
+					vista->CrearMenuCalidad();
+					currentMenu = "MenuCalidad";
+					tipo_cuello = "Mao";
+					break;
+				case 2:
+					vista->CrearMenuCalidad();
+					currentMenu = "MenuCalidad";
+					tipo_cuello = "Común";
+					break;
+				case 3:
+					vista->CrearMenuPrincipal(tienda, vendedor);
+					currentMenu = "MenuPrincipal";
+					break;
+				}
+			}
+		}
+	}else if(currentMenu == "MenuCalidad"){
+		if(opcionElegida == "h"){// Si la opción es h, ir al menú de historial
+			isValid = true;
+			vista->CrearMenuHistorial(cotizador->GetCotizaciones());
+			currentMenu = "MenuHistorial";
+		}else{
+			//Validar la opción elegida por el usuario
+			opcion = cotizador->ValidarEntero(opcionElegida);
+			if(opcion > 0 && opcion < 4){
+				isValid = true;
+			}else{
+				MostrarError(opcionElegida, "Opción invalida, seleccione 1, 2 o 3\n");
+			}
+			if(isValid){// Si la opción es valida pasar a la pantalla indicada
+				switch(opcion){
+				case 1:
+					vista->CrearMenuValor();
+					currentMenu = "MenuValor";
+					calidad = "Standard";
+					break;
+				case 2:
+					vista->CrearMenuValor();
+					currentMenu = "MenuValor";
+					calidad = "Premium";
+					break;
+				case 3:
+					vista->CrearMenuPrincipal(tienda, vendedor);
+					currentMenu = "MenuPrincipal";
+					break;
+				}
+			}
+		}
+	}else if(currentMenu == "MenuValor"){
+		//Validar la opción elegida por el usuario
+		if(opcionElegida == "*"){// Si la opción es *, volver al menú
+			isValid = true;
+			vista->CrearMenuPrincipal(tienda, vendedor);
+			currentMenu = "MenuPrincipal";
+		}else if(opcionElegida == "h"){// Si la opción es h, ir al menú de historial
+			isValid = true;
+			vista->CrearMenuHistorial(cotizador->GetCotizaciones());
+			currentMenu = "MenuHistorial";
+		}else{
+			opcionD = cotizador->ValidarDouble(opcionElegida);
+			if(opcionD > 0){
+				isValid = true;
+			}else{
+				MostrarError(opcionElegida, "Opción invalida, escriba un número o escriba * para volver al menú.\n");
+			}
+			if(isValid){// Si la opción es valida pasar a la pantalla indicada
+				precio = opcionD;
+				cantidadDisponible = 0;
+
+				//Prenda* tipoPrendaActual = new Prenda();
+				if(prenda == "Camisa"){	
+					Prenda* tipoPrendaActual = tienda->GetTipoPrenda(tipo_manga, tipo_cuello, calidad);
+					if(tipoPrendaActual){
+						cantidadDisponible = tipoPrendaActual->GetCantidad();
+						delete tipoPrendaActual;
+						tipoPrendaActual = NULL;
+					}else{
+						cantidadDisponible = -1;
+					}
+				}else{
+					Prenda* tipoPrendaActual = tienda->GetTipoPrenda(tipo_pantalon, calidad);
+					if(tipoPrendaActual){
+						cantidadDisponible = tipoPrendaActual->GetCantidad();
+						delete tipoPrendaActual;
+						tipoPrendaActual = NULL;
+					}
+					else {
+						cantidadDisponible = -1;
+					}
+				}
+				vista->CrearMenuCantidad(cantidadDisponible);
+				currentMenu = "MenuCantidad";
+			}
 		}
 	}
 
