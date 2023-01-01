@@ -1,0 +1,12 @@
+Camisa-Corta-Mao-Standard-100-
+Camisa-Corta-Mao-Premium-100-
+Camisa-Corta-Común-Standard-150-
+Camisa-Corta-Común-Premium-150-
+Camisa-Larga-Mao-Standard-75-
+Camisa-Larga-Mao-Premium-75-
+Camisa-Larga-Común-Standard-175-
+Camisa-Larga-Común-Premium-175-
+Pantalon-Chupín-Standard-750-
+Pantalon-Chupín-Premium-750-
+Pantalon-Común-Standard-250-
+Pantalon-Común-Premium-250-

@@ -1,0 +1,13 @@
+﻿  Camisa.cpp
+  Cotizacion.cpp
+  Cotizador.cpp
+  DesafioCotizador.cpp
+  Pantalon.cpp
+  Presentador.cpp
+  Tienda.cpp
+  Vendedor.cpp
+  Vistas.cpp
+F:\DesafioC\DesafioCotizador\Vistas.cpp(25,27): warning C4018: '<': no coinciden signed/unsigned
+  Generando código...
+LINK : warning LNK4075: se omite '/INCREMENTAL' debido a la especificación '/OPT:ICF'
+  DesafioCotizador.vcxproj -> F:\DesafioC\DesafioCotizador\Release\DesafioCotizador.exe
