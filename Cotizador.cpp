@@ -1,5 +1,4 @@
 #include "Cotizador.h"
-#include "Cotizacion.h"
 #include <ctime>
 #include <chrono>
 #include <fstream>
@@ -9,12 +8,14 @@
 
 Cotizador::Cotizador()
 {
+	
 }
 
 Cotizador::~Cotizador()
 {
+	std::cout << "Cotizado";
 	/* Limpiar y borrar los punteros en el vector cotizaciones */
-	for(Cotizacion* cot : cotizaciones){
+	for (Cotizacion* cot : cotizaciones) {
 		delete cot;
 		cot = NULL;
 	}
@@ -27,7 +28,6 @@ bool Cotizador::InicializarStock(Tienda* t)
 	//Abre el archivo stock.txt
 	std::string line;
 	std::fstream myfile;
-//	myfile.open("Stock.txt", std::fstream::out | std::fstream::in | std::fstream::app);
 	myfile.open("Stock.txt",std::fstream::in);
 	if(myfile){
 		std::string prendaActual;
@@ -38,7 +38,6 @@ bool Cotizador::InicializarStock(Tienda* t)
 		while(getline(myfile, line)){
 			std::vector<std::string> datosPrenda = SplitStr(line, "-");
 			prendaActual = datosPrenda[0];
-			std::cout << datosPrenda.size() << "\n";
 			tipo1Actual = datosPrenda[1];
 			if(prendaActual == "Camisas"){
 				tipo2Actual = datosPrenda[2];
@@ -91,7 +90,7 @@ bool Cotizador::InicializarStock(Tienda* t)
 }
 
 /* Abre el archivo txt con las cotizaciones realizadas y guarda la información en el vector cotizaciones */
-std::vector<Cotizacion*> Cotizador::LeerHistorial()
+bool Cotizador::LeerHistorial()
 {
 	/* Limpiar el vector y los punteros (si existen) */
 	for(Cotizacion* cot : cotizaciones){
@@ -116,10 +115,10 @@ std::vector<Cotizacion*> Cotizador::LeerHistorial()
 		/* Leer el archivo y llenar el vector de cotizaciones */
 		while (getline(myfile, line)) {
 			//Comenzar la lectura de una nueva cotización
-			if(line == "Cotización"){
+			if (line == "Cotización") {
 				linea = 0;
 			}
-			switch(linea){
+			switch (linea) {
 			case 1:
 				codigoCotizacion = line;
 				break;
@@ -144,15 +143,15 @@ std::vector<Cotizacion*> Cotizador::LeerHistorial()
 			}
 			linea++;
 			//Cuando se alcanzan todos los datos, se añade la cotización al historial en cotizaciones
-			if (linea == 8) {
-				Cotizacion* cotizacionPtr = new Cotizacion();
-				cotizacionPtr->CrearCotizacion(codigoCotizacion, fecha, codigo_vendedor, prenda, valor_unitario, cantidadPrenda, valorCotizacion);
+			if(linea == 8){
+				Cotizacion* cotizacionPtr = new Cotizacion(codigoCotizacion, fecha, codigo_vendedor, prenda, valor_unitario, cantidadPrenda, valorCotizacion);
 				cotizaciones.push_back(cotizacionPtr);
 			}
 		}
 		myfile.close();
+		return true;
 	}
-	return cotizaciones;
+	return false;
 }
 
 /* Funciones para validar la conversión de un string a número */

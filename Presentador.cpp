@@ -4,8 +4,10 @@
 Presentador::Presentador()
 {
 	vista = new Vistas();
+	cotizador = new Cotizador();
 	tienda = new Tienda();
 	vendedor = new Vendedor();
+	
 	prenda = "";
 	tipo_manga = "";
 	tipo_cuello = "";
@@ -42,14 +44,14 @@ void Presentador::InicializarVendedor(int codigo, std::string nombre, std::strin
 
 void Presentador::IniciarMenus()
 {
-	cotizador->LeerHistorial();
+	if(cotizador && cotizador->LeerHistorial()){
+		//Crear menu principal en la vista
+		vista->CrearMenuPrincipal(tienda, vendedor);
 
-	//Crear menu principal en la vista
-	vista->CrearMenuPrincipal(tienda, vendedor);
-
-	std::string opcionElegida;
-	std::cin >> opcionElegida;
-	HandleMenus(opcionElegida);
+		std::string opcionElegida;
+		std::cin >> opcionElegida;
+		HandleMenus(opcionElegida);
+	}
 }
 
 void Presentador::HandleMenus(std::string opcionElegida)
@@ -68,7 +70,7 @@ void Presentador::HandleMenus(std::string opcionElegida)
 		}if(isValid){// Si la opción es valida pasar a la pantalla indicada
 			switch (opcion){
 			case 1:
-				//vista->CrearMenuHistorial(cotizador->GetCotizaciones());
+				vista->CrearMenuHistorial(cotizador->GetCotizaciones());
 				currentMenu = "MenuHistorial";
 				break;
 			case 2:

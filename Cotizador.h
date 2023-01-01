@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "Tienda.h"
 #include "Cotizacion.h"
-#include <vector>
 
 class Cotizador
 {
@@ -13,7 +13,7 @@ public:
 	bool InicializarStock(Tienda* t);
 
 	/* Abre el archivo txt con las cotizaciones realizadas y guarda la información en el vector cotizaciones */
-	std::vector<Cotizacion*> LeerHistorial();
+	bool LeerHistorial();
 
 	/* Añade una cotizacion al historial (tanto en el vector cotizaciones como en el archivo txt) */
 	Cotizacion* AñadirCotizacion(int vendedor, std::string newTipoPrenda, int cantPrendas, double valorUnitario, double valorCotizado);

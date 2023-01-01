@@ -1,13 +1,14 @@
 #include "Cotizacion.h"
 
-Cotizacion::Cotizacion()
+Cotizacion::Cotizacion(std::string codigoCotizacion, std::string fecha, int codigo_vendedor, std::string newPrenda, double valor_unitario, int cantidadPrenda, double valorCotizacion)
 {
-	codigoIdentificacion = "XXX";
-	fechaHora = "";
-	codigoVendedor = 0;
-	prenda = "";
-	cantidadCotizada = 0;
-	totalCotizado = 0;
+	codigoIdentificacion = codigoCotizacion;
+	fechaHora = fecha;
+	codigoVendedor = codigo_vendedor;
+	prenda = newPrenda;
+	valorUnitario = valor_unitario;
+	cantidadCotizada = cantidadPrenda;
+	totalCotizado = valorCotizacion;
 }
 
 void Cotizacion::CrearCotizacion(std::string codigoCotizacion, std::string fecha, int codigo_vendedor, std::string newPrenda, double valor_unitario, int cantidadPrenda, double valorCotizacion)

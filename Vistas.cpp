@@ -21,6 +21,21 @@ void Vistas::CrearMenuHistorial(std::vector<Cotizacion*> cotizaciones)
     CrearBanner("HISTORIAL DE COTIZACIONES");
     std::cout << "Presiona 3 para volver al menú principal\n";
     std::cout << "---------------------------------------------\n";
+    if(cotizaciones.size() > 0){
+        for (int i = 0; i < cotizaciones.size(); i++) {
+            std::cout << "Número de identificación: " << cotizaciones[i]->GetCodigoIdentificacion() << "\n";
+            std::cout << "Fecha y Hora de la cotización: " << cotizaciones[i]->GetFecha() << "\n";
+            std::cout << "Código del vendedor: " << cotizaciones[i]->GetCodigoVendedor() << "\n";
+            std::cout << "Prenda cotizada: " << cotizaciones[i]->GetPrenda() << "\n";
+            std::cout << "Precio unitario: $" << cotizaciones[i]->GetValorUnitario() << "\n";
+            std::cout << "Cantidad de unidades: " << cotizaciones[i]->GetCantidad() << "\n";
+            std::cout << "Precio Final: $" << cotizaciones[i]->GetTotal() << "\n";
+            std::cout << "---------------------------------------------\n\n";
+        }
+    }else{
+        std::cout << "No se han creado cotizaciones.\n";
+        std::cout << "---------------------------------------------\n\n";
+    }
 }
 
 void Vistas::CrearMenuCotizacion()
