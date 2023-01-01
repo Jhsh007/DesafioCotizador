@@ -4,6 +4,7 @@
 class Cotizacion
 {
 public:
+	Cotizacion();
 	Cotizacion(std::string codigoCotizacion, std::string fecha, int codigo_vendedor, std::string newPrenda, double valor_unitario, int cantidadPrenda, double valorCotizacion);
 
 	void CrearCotizacion(std::string codigoCotizacion, std::string fecha, int codigo_vendedor, std::string newPrenda, double valor_unitario, int cantidadPrenda, double valorCotizacion);

@@ -89,6 +89,80 @@ bool Cotizador::InicializarStock(Tienda* t)
 	}
 }
 
+/* Añade una cotizacion al historial (tanto en el vector cotizaciones como en el archivo txt) */
+Cotizacion* Cotizador::AñadirCotizacion(int vendedor, std::string newTipoPrenda, int cantPrendas, double valorUnitario, double valorCotizado)
+{
+	Cotizacion* cotizacionPtr = NULL;
+	/* Crear la fecha */
+	time_t rawtime = std::time(0);
+	struct tm timeinfo;
+	localtime_s(&timeinfo, &rawtime);
+	std::string fechaActual = "";
+	fechaActual.append(std::to_string(timeinfo.tm_mday));
+	fechaActual.append("/" + std::to_string(timeinfo.tm_mon + 1));
+	fechaActual.append("/" + std::to_string(timeinfo.tm_year + 1900));
+	fechaActual.append("  " + std::to_string(timeinfo.tm_hour));
+	if(timeinfo.tm_min > 9)
+		fechaActual.append(":" + std::to_string(timeinfo.tm_min));
+	else
+		fechaActual.append(":0" + std::to_string(timeinfo.tm_min));
+
+	/* Abrir archivo */
+	std::string line;
+	std::fstream myfile;
+	myfile.open("HistorialCotizaciones.txt", std::fstream::out | std::fstream::in | std::fstream::app);
+	if(myfile){
+		/* Escribir en el archivo */
+		std::string codigoCotizacion = "";
+		int cantCotizaciones = cotizaciones.size();
+		cantCotizaciones++;
+		if(cotizaciones.size() < 10){
+			codigoCotizacion.append("00" + std::to_string(cantCotizaciones));
+		}else if(cotizaciones.size() < 100){
+			codigoCotizacion.append("0" + std::to_string(cantCotizaciones));
+		}else{
+			codigoCotizacion.append("" + std::to_string(cantCotizaciones));
+		}
+		myfile << "Cotización\n";
+		myfile << codigoCotizacion << "\n";
+		myfile << fechaActual << "\n";
+		myfile << vendedor << "\n";
+		myfile << newTipoPrenda << "\n";
+		myfile << valorUnitario << "\n";
+		myfile << cantPrendas << "\n";
+		myfile << valorCotizado << "\n";
+		myfile.close();
+
+		//Añade el puntero al vector de cotizaciones
+		cotizacionPtr = new Cotizacion();
+		cotizacionPtr->CrearCotizacion(codigoCotizacion, fechaActual, vendedor, newTipoPrenda, valorUnitario, cantPrendas, valorCotizado);
+		cotizaciones.push_back(cotizacionPtr);
+	}
+	return cotizacionPtr;
+}
+
+/* Funciones par cotizar */
+double Cotizador::Cotizar(std::string tipoManga, std::string tipoCuello, std::string calidad, double precio, int cantidad) {
+	if(tipoManga == "Corta")
+		precio *= 0.9f;
+	if(tipoCuello == "Mao")
+		precio *= 1.03f;
+	if(calidad == "Premium")
+		precio *= 1.3f;
+	precio *= cantidad;
+
+	return precio;
+}
+double Cotizador::Cotizar(std::string tipoPantalon, std::string calidad, double precio, int cantidad) {
+	if(tipoPantalon == "Chupín")
+		precio *= 0.88f;
+	if(calidad == "Premium")
+		precio *= 1.3f;
+	precio *= cantidad;
+
+	return precio;
+}
+
 /* Abre el archivo txt con las cotizaciones realizadas y guarda la información en el vector cotizaciones */
 bool Cotizador::LeerHistorial()
 {

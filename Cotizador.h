@@ -12,6 +12,10 @@ public:
 	/* Añade a la tienda la cantidad de prendas según su tipo, tomando como base un archivo txt ya existente  */
 	bool InicializarStock(Tienda* t);
 
+	/* Funciones par cotizar */
+	double Cotizar(std::string tipoManga, std::string tipoCuello, std::string calidad, double precio, int cantidad);
+	double Cotizar(std::string tipoPantalon, std::string calidad, double precio, int cantidad);
+
 	/* Abre el archivo txt con las cotizaciones realizadas y guarda la información en el vector cotizaciones */
 	bool LeerHistorial();
 

@@ -280,6 +280,52 @@ void Presentador::HandleMenus(std::string opcionElegida)
 				currentMenu = "MenuCantidad";
 			}
 		}
+	}else if(currentMenu == "MenuCantidad"){
+		if(opcionElegida == "*"){// Si la opción es * volver al menú
+			isValid = true;
+			vista->CrearMenuPrincipal(tienda, vendedor);
+			currentMenu = "MenuPrincipal";
+		}else if(opcionElegida == "h"){// Si la opción es h, ir al menú de historial
+			isValid = true;
+			vista->CrearMenuHistorial(cotizador->GetCotizaciones());
+			currentMenu = "MenuHistorial";
+		}else{
+			//Validar la opción elegida por el usuario
+			opcion = cotizador->ValidarEntero(opcionElegida);
+			if(opcion > 0){
+				isValid = true;
+			}else{
+				MostrarError(opcionElegida, "Opción invalida, escriba un número o escriba * para volver al menú.\n");
+			}
+			if(isValid){// Si la opción es valida pasar a la pantalla indicada
+				if(opcion <= cantidadDisponible){
+					Cotizacion* cotizacionCreada = new Cotizacion();
+					std::string tipo;
+					cantidad = opcion;
+					/* Crear la cotización de acuerdo al tipo de prenda */
+					if(prenda == "Camisa"){
+						tipo = tipo_manga;
+						if(tipo_cuello != ""){
+							tipo.append(" - " + tipo_cuello);
+						}
+						total = cotizador->Cotizar(tipo_manga, tipo_cuello, calidad, precio, cantidad);
+						std::string tipoPrenda = prenda + " - " + tipo + " - " + calidad;
+						cotizacionCreada = cotizador->AñadirCotizacion(vendedor->GetCodigo(), tipoPrenda, cantidad, precio, total);
+					}else{
+						if (tipo_pantalon != "")
+							tipo = tipo_pantalon;
+						total = cotizador->Cotizar(tipo_pantalon, calidad, precio, cantidad);
+						std::string tipoPrenda = prenda + " - " + tipo + " - " + calidad;
+						cotizacionCreada = cotizador->AñadirCotizacion(vendedor->GetCodigo(), tipoPrenda, cantidad, precio, total);
+					}
+					// Crear el siguiente menú
+					vista->CrearMenuValorCotizado(cotizacionCreada->GetCodigoIdentificacion(), cotizacionCreada->GetFecha(), vendedor->GetCodigo(), prenda, tipo, calidad, precio, cantidad, total);
+					currentMenu = "MenuCotizado";
+				}else{
+					MostrarError(opcionElegida, "Opción invalida, escriba una cantidad igual o inferior a la cantidad máxima en stock.\n");
+				}
+			}
+		}
 	}
 
 	/* Si la opción es valida, esperar por la siguiente opción del usuario */
