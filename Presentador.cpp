@@ -260,8 +260,6 @@ void Presentador::HandleMenus(std::string opcionElegida)
 					Prenda* tipoPrendaActual = tienda->GetTipoPrenda(tipo_manga, tipo_cuello, calidad);
 					if(tipoPrendaActual){
 						cantidadDisponible = tipoPrendaActual->GetCantidad();
-						delete tipoPrendaActual;
-						tipoPrendaActual = NULL;
 					}else{
 						cantidadDisponible = -1;
 					}
@@ -269,10 +267,7 @@ void Presentador::HandleMenus(std::string opcionElegida)
 					Prenda* tipoPrendaActual = tienda->GetTipoPrenda(tipo_pantalon, calidad);
 					if(tipoPrendaActual){
 						cantidadDisponible = tipoPrendaActual->GetCantidad();
-						delete tipoPrendaActual;
-						tipoPrendaActual = NULL;
-					}
-					else {
+					}else{
 						cantidadDisponible = -1;
 					}
 				}

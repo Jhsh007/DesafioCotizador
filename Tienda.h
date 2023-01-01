@@ -11,7 +11,7 @@ public:
 	void Inicializar(std::string nombre, std::string direccion);
 	//Añade un tipo de prenda al vector tiposPrendas
 	void AñadirPrenda(Prenda* prenda);
-
+	/* Devuelve un puntero a la prenda adecuada de acuerdo al tipo requerido */
 	Prenda* GetTipoPrenda(std::string tipo1, std::string tipo2, std::string calidad);
 	Prenda* GetTipoPrenda(std::string tipo, std::string calidad);
 

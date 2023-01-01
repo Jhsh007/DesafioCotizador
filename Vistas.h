@@ -15,6 +15,7 @@ public:
 	void CrearMenuValor();
 	void CrearMenuCantidad(int cantidad);
 	void CrearMenuValorCotizado(std::string codigoCotizacion, std::string fecha, int codigoVendedor, std::string prenda, std::string tipo, std::string calidad, double valor, int cantidad, double total);
+	
 	void Salir();
 	void CrearBanner(std::string menu);
 	void MostrarError(std::string error, std::string tipo);

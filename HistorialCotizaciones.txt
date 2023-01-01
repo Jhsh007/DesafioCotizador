@@ -1,16 +1,16 @@
 Cotización
 001
-31/12/2022  22:31
+1/1/2023  12:46
 1516
-Pantalon - Chupín - Premium
-15.3
-150
-2625.48
+Pantalon - Chupín - Standard
+15.77
+25
+346.94
 Cotización
 002
-31/12/2022  22:36
+1/1/2023  12:47
 1516
-Camisa - Corta - Mao - Premium
-55.3
-50
-3332.1
+Camisa - Larga - Mao - Premium
+25.79
+70
+2417.3

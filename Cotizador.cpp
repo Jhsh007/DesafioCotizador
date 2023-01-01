@@ -15,7 +15,7 @@ Cotizador::~Cotizador()
 {
 	std::cout << "Cotizado";
 	/* Limpiar y borrar los punteros en el vector cotizaciones */
-	for (Cotizacion* cot : cotizaciones) {
+	for(Cotizacion* cot : cotizaciones){
 		delete cot;
 		cot = NULL;
 	}
@@ -134,8 +134,7 @@ Cotizacion* Cotizador::AñadirCotizacion(int vendedor, std::string newTipoPrenda,
 		myfile.close();
 
 		//Añade el puntero al vector de cotizaciones
-		cotizacionPtr = new Cotizacion();
-		cotizacionPtr->CrearCotizacion(codigoCotizacion, fechaActual, vendedor, newTipoPrenda, valorUnitario, cantPrendas, valorCotizado);
+		cotizacionPtr = new Cotizacion(codigoCotizacion, fechaActual, vendedor, newTipoPrenda, valorUnitario, cantPrendas, valorCotizado);
 		cotizaciones.push_back(cotizacionPtr);
 	}
 	return cotizacionPtr;
@@ -187,9 +186,9 @@ bool Cotizador::LeerHistorial()
 		int cantidadPrenda = 0;
 		double valorCotizacion = 0;
 		/* Leer el archivo y llenar el vector de cotizaciones */
-		while (getline(myfile, line)) {
+		while(getline(myfile, line)){
 			//Comenzar la lectura de una nueva cotización
-			if (line == "Cotización") {
+			if(line == "Cotización"){
 				linea = 0;
 			}
 			switch (linea) {

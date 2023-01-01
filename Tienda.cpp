@@ -24,11 +24,13 @@ void Tienda::Inicializar(std::string nombre, std::string direccion)
 	direccion_tienda = direccion;
 }
 
+//Añade un tipo de prenda al vector tiposPrendas
 void Tienda::AñadirPrenda(Prenda* prenda)
 {
 	tiposPrendas.push_back(prenda);
 }
 
+/* Devuelve un puntero a la prenda adecuada de acuerdo al tipo requerido */
 Prenda* Tienda::GetTipoPrenda(std::string tipo1, std::string tipo2, std::string calidad)
 {
 	for(Prenda* tipoPrenda : tiposPrendas){
@@ -42,7 +44,6 @@ Prenda* Tienda::GetTipoPrenda(std::string tipo1, std::string tipo2, std::string 
 	}
 	return nullptr;
 }
-
 Prenda* Tienda::GetTipoPrenda(std::string tipo1, std::string calidad)
 {
 	for(Prenda* tipoPrenda : tiposPrendas){
