@@ -42,7 +42,7 @@ void Presentador::InicializarVendedor(int codigo, std::string nombre, std::strin
 
 void Presentador::IniciarMenus()
 {
-	//cotizador->LeerHistorial();
+	cotizador->LeerHistorial();
 
 	//Crear menu principal en la vista
 	vista->CrearMenuPrincipal(tienda, vendedor);

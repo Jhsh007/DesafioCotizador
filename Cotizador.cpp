@@ -90,6 +90,71 @@ bool Cotizador::InicializarStock(Tienda* t)
 	}
 }
 
+/* Abre el archivo txt con las cotizaciones realizadas y guarda la información en el vector cotizaciones */
+std::vector<Cotizacion*> Cotizador::LeerHistorial()
+{
+	/* Limpiar el vector y los punteros (si existen) */
+	for(Cotizacion* cot : cotizaciones){
+		delete cot;
+		cot = NULL;
+	}
+	cotizaciones.clear();
+
+	/* Abrir archivo */
+	std::string line;
+	std::fstream myfile;
+	myfile.open("HistorialCotizaciones.txt", std::fstream::out | std::fstream::in | std::fstream::app);
+	if(myfile){
+		std::string codigoCotizacion = "";
+		int linea = 0;
+		std::string fecha = "";
+		int codigo_vendedor = 0;
+		std::string prenda = "";
+		double valor_unitario = 0;
+		int cantidadPrenda = 0;
+		double valorCotizacion = 0;
+		/* Leer el archivo y llenar el vector de cotizaciones */
+		while (getline(myfile, line)) {
+			//Comenzar la lectura de una nueva cotización
+			if(line == "Cotización"){
+				linea = 0;
+			}
+			switch(linea){
+			case 1:
+				codigoCotizacion = line;
+				break;
+			case 2:
+				fecha = line;
+				break;
+			case 3:
+				codigo_vendedor = ValidarEntero(line);
+				break;
+			case 4:
+				prenda = line;
+				break;
+			case 5:
+				valor_unitario = ValidarDouble(line);
+				break;
+			case 6:
+				cantidadPrenda = ValidarEntero(line);
+				break;
+			case 7:
+				valorCotizacion = ValidarDouble(line);
+				break;
+			}
+			linea++;
+			//Cuando se alcanzan todos los datos, se añade la cotización al historial en cotizaciones
+			if (linea == 8) {
+				Cotizacion* cotizacionPtr = new Cotizacion();
+				cotizacionPtr->CrearCotizacion(codigoCotizacion, fecha, codigo_vendedor, prenda, valor_unitario, cantidadPrenda, valorCotizacion);
+				cotizaciones.push_back(cotizacionPtr);
+			}
+		}
+		myfile.close();
+	}
+	return cotizaciones;
+}
+
 /* Funciones para validar la conversión de un string a número */
 int Cotizador::ValidarEntero(std::string dato)
 {
