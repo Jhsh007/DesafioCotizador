@@ -140,25 +140,27 @@ Cotizacion* Cotizador::AñadirCotizacion(int vendedor, std::string newTipoPrenda,
 }
 
 /* Funciones par cotizar */
-double Cotizador::Cotizar(std::string tipoManga, std::string tipoCuello, std::string calidad, double precio, int cantidad) {
+double Cotizador::Cotizar(std::string tipoManga, std::string tipoCuello, std::string calidad, double precio, int cantidad){
+	double precioFinal = precio;
 	if(tipoManga == "Corta")
-		precio *= 0.9f;
+		precioFinal -= precio * 0.1f;
 	if(tipoCuello == "Mao")
-		precio *= 1.03f;
+		precioFinal += precio * 0.03f;
 	if(calidad == "Premium")
-		precio *= 1.3f;
-	precio *= cantidad;
+		precioFinal += precio * 0.3f;
+	precioFinal *= cantidad;
 
-	return precio;
+	return precioFinal;
 }
-double Cotizador::Cotizar(std::string tipoPantalon, std::string calidad, double precio, int cantidad) {
+double Cotizador::Cotizar(std::string tipoPantalon, std::string calidad, double precio, int cantidad){
+	double precioFinal = precio;
 	if(tipoPantalon == "Chupín")
-		precio *= 0.88f;
+		precioFinal -= precio * 0.12f;
 	if(calidad == "Premium")
-		precio *= 1.3f;
-	precio *= cantidad;
+		precioFinal += precio * 0.3f;
+	precioFinal *= cantidad;
 
-	return precio;
+	return precioFinal;
 }
 
 /* Abre el archivo txt con las cotizaciones realizadas y guarda la información en el vector cotizaciones */
